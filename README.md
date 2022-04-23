@@ -1,7 +1,7 @@
 # invoice-ninja-upgrade-script
 
 ![Version](https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000)
-[![License: GNU 3.0](https://img.shields.io/badge/License-GNU%203.0-yellow.svg)](https://github.com/JMousqueton/Badware/blob/main/LICENSE)
+[![License: GNU 3.0](https://img.shields.io/badge/License-GNU%203.0-yellow.svg)](https://github.com/JMousqueton/invoice-ninja-upgrade-script/blob/main/LICENSE)
 [![Twitter: JMousqueton](https://img.shields.io/twitter/follow/JMousqueton.svg?style=social)](https://twitter.com/JMousqueton)
 
 > Upgrade script for Invoice Ninja self-hosted
