@@ -10,7 +10,20 @@
 
 Quick & Dirty script to upgrade my self hosted [Invoice Ninja](https://github.com/invoiceninja) v5 instance. 
 
+✅ Tested only on Ubuntu 
+
+## Prerequisites 
+
+Need mlocate
+
+On Ubuntu : 
+```sudo apt install mlocate```
+
 ## Usage 
+
+Just launch upgrade.sh 
+
+```./upgrade.sh```
 
 ## Author
 
