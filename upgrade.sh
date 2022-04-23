@@ -1,12 +1,12 @@
 #!/bin/bash 
-#Invoice Ninja Self-Hosted Update
+#Invoice Ninja Self-Hosted Upgrade
 
-#SET INVOICE NINJA INSTALL AND STORAGE PATHS
+#SET INVOICE NINJA INSTALL PATH
 #--------------------------------------------------------
 updatedb
 ninja_home="$(locate -b '\composer.json' | xargs grep -l "invoiceninja/invoiceninja" | xargs -n 1 dirname)"
 
-#GET INSTALLED AND CURRENT VERSION NUMBERS
+#GET INSTALLED AND LATEST VERSION 
 #--------------------------------------------------------
 versiontxt="$ninja_home/VERSION.txt"
 ninja_installed="$(cat "$versiontxt")"
@@ -14,7 +14,7 @@ ninja_latest=$(basename $(curl -fs -o/dev/null -w %{redirect_url} https://github
 
 #SEE IF AN UPDATE IS REQUIRED
 #--------------------------------------------------------
-update_required="no"
+updgrade_required="no"
 set -f
 array_ninja_installed=(${ninja_installed//./ })
 array_ninja_latest=(${ninja_latest//./ })
@@ -28,16 +28,16 @@ for ((i=0; i<${#array_ninja_installed[@]}; i++))
 do
     if (( ${array_ninja_installed[$i]} < ${array_ninja_latest[$i]} ))
     then
-    update_required="yes"
+    upgrade_required="yes"
     fi
 done
 
 
-#MAIN UPDATE SECTION
+#MAIN UPGRADE SECTION
 #--------------------------------------------------------
-case $update_required in
+case $upgrade_required in
     no)
-    printf '%s - Invoice Ninja v%s is installed with the lastest version. No update required.\n' "$(date)" "$ninja_installed"
+    printf '\n%s - Invoice Ninja v%s is installed with the lastest version. No upgrade required.\n' "$(date)" "$ninja_installed"
     ;;
     yes)
     printf '\n%s - Updating Invoice Ninja from v%s to v%s.\n\n' "$(date)" "$ninja_installed" "$ninja_latest"
