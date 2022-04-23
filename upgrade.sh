@@ -32,26 +32,30 @@ do
     fi
 done
 
-echo $update_required
 
 #MAIN UPDATE SECTION
 #--------------------------------------------------------
 case $update_required in
     no)
-    printf '%s - Invoice Ninja v%s is installed and is current. No update required.\n' "$(date)" "$ninja_installed"
+    printf '%s - Invoice Ninja v%s is installed with the lastest version. No update required.\n' "$(date)" "$ninja_installed"
     ;;
     yes)
     printf '\n%s - Updating Invoice Ninja from v%s to v%s.\n\n' "$(date)" "$ninja_installed" "$ninja_latest"
 
+    printf 'Deleting previous archive\n\n'
+    rm -f $ninja_home/invoicejinja.zip
+    
     printf 'Downloading Invoice Ninja v%s archive ...\n\n' "$ninja_latest" 
     wget https://github.com/invoiceninja/invoiceninja/releases/download/$ninja_latest/invoiceninja.zip
     
-    printf 'Extracting to temporary folder "%s" ...\n\n' "$tempdir"
+    printf 'Extracting to temporary folder "%s" ...\n\n' "$ninja_home"
     unzip -o invoiceninja.zip 
 
-     printf '%s - Invoice Ninja successfully updated to v%s!\n\n' "$(date)" "$ninja_latest"
+    printf '%s - Invoice Ninja successfully updated to v%s!\n\n' "$(date)" "$ninja_latest"
 
-    printf 'update configuration'
+    printf 'update configuration\n\n'
     php artisan optimize
+    ninja_installed="$(cat "$versiontxt")"
+    printf '✔︎ Invoice Ninja "%s" fully installed\n\n' "$ninja_installed"
     ;;
 esac
