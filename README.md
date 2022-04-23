@@ -46,6 +46,6 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2021 [Julien Mousqueton](https://github.com/JMousqueton).
+Copyright © 2022 [Julien Mousqueton](https://github.com/JMousqueton).
 
 This project is [GNU 3.0](https://github.com/JMousqueton/invoice-ninja-upgrade-script/blob/main/LICENSE) licensed.
