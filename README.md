@@ -4,7 +4,7 @@
 [![License: GNU 3.0](https://img.shields.io/badge/License-GNU%203.0-yellow.svg)](https://github.com/JMousqueton/invoice-ninja-upgrade-script/blob/main/LICENSE)
 [![Twitter: JMousqueton](https://img.shields.io/twitter/follow/JMousqueton.svg?style=social)](https://twitter.com/JMousqueton)
 
-> Upgrade script for Invoice Ninja self-hosted
+> Upgrade script for Invoice Ninja self-hosted v5
 
 ## Description
 
