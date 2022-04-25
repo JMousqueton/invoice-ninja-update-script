@@ -93,6 +93,11 @@ detect_version_id () {
   fi
 }
 
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
 #CHECK OS
 #--------------------------------------------------------
 #detect_os
@@ -103,6 +108,7 @@ detect_version_id () {
 mlocate_check
 updatedb
 ninja_home="$(locate -b '\composer.json' | xargs grep -l "invoiceninja/invoiceninja" | xargs -n 1 dirname)"
+ninja_user="$(sudo ps aux | grep 'php-fpm: pool' | grep -v grep | cut -d' ' -f 1 | head -n 1)" 
 
 #GET INSTALLED AND LATEST VERSION 
 #--------------------------------------------------------
@@ -144,6 +150,7 @@ case $upgrade_required in
     rm -f $ninja_home/invoicejinja.zip
     
     printf 'Downloading Invoice Ninja v%s archive ...\n\n' "$ninja_latest" 
+    cd $ninja_home 
     wget https://github.com/invoiceninja/invoiceninja/releases/download/$ninja_latest/invoiceninja.zip
     
     printf 'Extracting to temporary folder "%s" ...\n\n' "$ninja_home"
@@ -153,6 +160,7 @@ case $upgrade_required in
 
     printf 'update configuration\n\n'
     php artisan optimize
+    chown -R $ninja_user * 
     ninja_installed="$(cat "$versiontxt")"
     printf '✔︎ Invoice Ninja "%s" fully installed\n\n' "$ninja_installed"
     ;;
