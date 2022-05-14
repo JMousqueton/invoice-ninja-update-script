@@ -10,7 +10,7 @@
 
 Quick & Dirty script to upgrade my self hosted [Invoice Ninja](https://github.com/invoiceninja) v5 instance. 
 
-✅ Tested only on Ubuntu 
+✅ Tested only on Ubuntu with nginx
 
 ## Prerequisites 
 
