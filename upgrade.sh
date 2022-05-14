@@ -163,5 +163,10 @@ case $upgrade_required in
     chown -R $ninja_user * 
     ninja_installed="$(cat "$versiontxt")"
     printf '✔︎ Invoice Ninja "%s" fully installed\n\n' "$ninja_installed"
+    
+    nginx_owner=$(grep -e '^Uid:' /proc/$(pidof nginx -s)/status | cut -f 2)
+    nginx_grp=$(grep -e '^Gid:' /proc/$(pidof nginx -s)/status | cut -f 2)
+    printf 'update right\n\n'
+    sudo chown -R $nginx_owner:$nginx_grp $ninja_home
     ;;
 esac
