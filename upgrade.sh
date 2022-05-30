@@ -118,7 +118,7 @@ ninja_latest=$(basename $(curl -fs -o/dev/null -w %{redirect_url} https://github
 
 #SEE IF AN UPDATE IS REQUIRED
 #--------------------------------------------------------
-updgrade_required="no"
+upgrade_required="no"
 set -f
 array_ninja_installed=(${ninja_installed//./ })
 array_ninja_latest=(${ninja_latest//./ })
