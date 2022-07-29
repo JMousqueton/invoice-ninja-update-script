@@ -159,6 +159,7 @@ case $upgrade_required in
     printf '%s - Invoice Ninja successfully updated to v%s!\n\n' "$(date)" "$ninja_latest"
 
     printf 'update configuration\n\n'
+    composer install -n
     php artisan optimize
     chown -R $ninja_user * 
     ninja_installed="$(cat "$versiontxt")"
